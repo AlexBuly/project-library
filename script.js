@@ -9,5 +9,6 @@ function addBooktoLibrary() {
     Form input includes author, title pages and read */
 }
 
-// loop through array 
+// loop through array
+// contents of form or array returned from the constructor
 // delete book 
