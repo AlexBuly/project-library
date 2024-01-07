@@ -4,7 +4,7 @@ const card2 = document.querySelector(".card2");
 const card3 = document.querySelector(".card3");
 const card4 = document.querySelector(".card4");
 
-const myLibrary = []; // Book items 
+const myLibrary = []; // Book items
 
 function Book(title, author, pages, read) {
     // author, title, pages, read
@@ -18,7 +18,7 @@ function Book(title, author, pages, read) {
 }
 
 const theHobbit = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
-card1.textContent = theHobbit.info();
+card1.textContent = theHobbit.info()
 
 const harryPotter = new Book("Harry Potter and the Goblet of Fire ", "J.K. Rowling", "636", "read");
 card2.textContent = harryPotter.info();
@@ -85,9 +85,12 @@ fieldset.appendChild(br.cloneNode());
 const post = document.createElement("button");
 post.type = "sumbit";
 post.textContent = "Add book";
-fieldset.appendChild(post); 
+fieldset.appendChild(post);
 
+post.addEventListener("click", (event) => {
+    document.querySelectorAll("input").forEach(input => myLibrary.push(input.value));
+    event.preventDefault();
 
-
+});
 
 
