@@ -1,8 +1,5 @@
 const container = document.querySelector(".container")
-const card1 = document.querySelector(".card1");
-const card2 = document.querySelector(".card2");
-const card3 = document.querySelector(".card3");
-const card4 = document.querySelector(".card4");
+const card = document.querySelector(".card");
 
 const myLibrary = []; // Book items
 
@@ -17,18 +14,6 @@ function Book(title, author, pages, read) {
     }
 }
 
-const theHobbit = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
-//card1.textContent = theHobbit.info()
-
-const harryPotter = new Book("Harry Potter and the Goblet of Fire ", "J.K. Rowling", "636", "read");
-card2.textContent = harryPotter.info();
-
-const hungerGames = new Book("The Hunger Games", "Suzanne Collins", "374", "read");
-card3.textContent = hungerGames.info();
-
-const forestGump = new Book("Forest Gump", "Winston Groom", "228", "read");
-card4.textContent = forestGump.info();
-
 const addBooktoLibrary = () => {
     const form = document.createElement("form");
     const fieldset = document.createElement("fieldset");
@@ -39,48 +24,48 @@ const addBooktoLibrary = () => {
 
     const br = document.createElement("br");
 
-    const title = document.createElement("input");
-    title.type = "text"
-    title.id = "title";
-    title.name= "title";
+    const titleInput = document.createElement("input");
+    titleInput.type = "text"
+    titleInput.id = "title";
+    titleInput.name= "title";
     const tLabel = document.createElement("label");
     tLabel.htmlFor = "title";
     tLabel.textContent = "Title: ";
     fieldset.appendChild(tLabel)
-    fieldset.appendChild(title);
+    fieldset.appendChild(titleInput);
     fieldset.appendChild(br);
 
-    const author = document.createElement("input");
-    author.type = "text";
-    author.id = "author";
-    author.name = "author";
+    const authorInput = document.createElement("input");
+    authorInput.type = "text";
+    authorInput.id = "author";
+    authorInput.name = "author";
     const aLabel = document.createElement("label");
     aLabel.htmlFor = "author";
     aLabel.textContent = "Author: ";
     fieldset.appendChild(aLabel);
-    fieldset.appendChild(author);
+    fieldset.appendChild(authorInput);
     fieldset.appendChild(br.cloneNode());
 
-    const pages = document.createElement("input");
-    pages.type = "number";
-    pages.id = "pages";
-    pages.name = "pages";
+    const pagesInput = document.createElement("input");
+    pagesInput.type = "number";
+    pagesInput.id = "pages";
+    pagesInput.name = "pages";
     const pLabel = document.createElement("label");
     pLabel.htmlFor = "pages";
     pLabel.textContent = "Pages: ";
     fieldset.appendChild(pLabel);
-    fieldset.appendChild(pages);
+    fieldset.appendChild(pagesInput);
     fieldset.appendChild(br.cloneNode());
 
-    const read = document.createElement("input");
-    read.type = "text";
-    read.id = "read";
-    read.name = "read";
+    const readInput = document.createElement("input");
+    readInput.type = "text";
+    readInput.id = "read";
+    readInput.name = "read";
     const rLabel = document.createElement("label");
     rLabel.htmlFor = "read";
     rLabel.textContent = "Read: ";
     fieldset.appendChild(rLabel);
-    fieldset.appendChild(read);
+    fieldset.appendChild(readInput);
     fieldset.appendChild(br.cloneNode());
 
     const post = document.createElement("button");
@@ -91,11 +76,15 @@ const addBooktoLibrary = () => {
 
     post.addEventListener("click", (event) => {
         event.preventDefault();
-        myLibrary.push(title.value, author.value, pages.value, read.value);
+        myLibrary.push(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
         //card1.textContent = `${title.value}, ${author.value}, ${pages.value}, ${read.value}`;
-        for(i = 0; i < myLibrary.length; i++) {
-            card1.textContent = myLibrary;
-        }
+        //for(i = 0; i < myLibrary.length; i++) {
+            //card1.textContent = myLibrary;
+        //}
+        const addBook  = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
+        card.textContent = addBook.info();
+        myLibrary.length = 0;
+        form.remove();
     });   
 }
 
