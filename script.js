@@ -1,5 +1,5 @@
-const container = document.querySelector(".container")
-const card = document.querySelector(".card");
+const container = document.querySelector(".container");
+const bookCards = document.querySelector(".bookCards");
 
 const myLibrary = []; // Book items
 
@@ -82,9 +82,13 @@ const addBooktoLibrary = () => {
             //card1.textContent = myLibrary;
         //}
         const addBook  = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
-        card.textContent = addBook.info();
         myLibrary.length = 0;
         form.remove();
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = addBook.info();
+        bookCards.appendChild(card);
     });   
 }
 
