@@ -18,7 +18,7 @@ function Book(title, author, pages, read) {
 }
 
 const theHobbit = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
-card1.textContent = theHobbit.info()
+//card1.textContent = theHobbit.info()
 
 const harryPotter = new Book("Harry Potter and the Goblet of Fire ", "J.K. Rowling", "636", "read");
 card2.textContent = harryPotter.info();
@@ -92,7 +92,10 @@ const addBooktoLibrary = () => {
     post.addEventListener("click", (event) => {
         event.preventDefault();
         myLibrary.push(title.value, author.value, pages.value, read.value);
-        card1.textContent = `${title.value}, ${author.value}, ${pages.value}, ${read.value}`;
+        //card1.textContent = `${title.value}, ${author.value}, ${pages.value}, ${read.value}`;
+        for(i = 0; i < myLibrary.length; i++) {
+            card1.textContent = myLibrary;
+        }
     });   
 }
 
