@@ -58,9 +58,10 @@ const addBooktoLibrary = () => {
     fieldset.appendChild(br.cloneNode());
 
     const readInput = document.createElement("input");
-    readInput.type = "text";
+    readInput.type = "checkbox";
     readInput.id = "read";
     readInput.name = "read";
+    //readInput.value = "read";
     const rLabel = document.createElement("label");
     rLabel.htmlFor = "read";
     rLabel.textContent = "Read: ";
@@ -73,14 +74,14 @@ const addBooktoLibrary = () => {
     post.textContent = "Add book";
     fieldset.appendChild(post);
 
-
     post.addEventListener("click", (event) => {
         event.preventDefault();
+        if (readInput.checked === false) {
+            readInput.value = "not read"
+        } else if (readInput.checked === true) {
+            readInput.value = "read";
+        }
         myLibrary.push(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
-        //card1.textContent = `${title.value}, ${author.value}, ${pages.value}, ${read.value}`;
-        //for(i = 0; i < myLibrary.length; i++) {
-            //card1.textContent = myLibrary;
-        //}
         const addBook  = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
         myLibrary.length = 0;
         form.remove();
@@ -89,7 +90,5 @@ const addBooktoLibrary = () => {
         card.classList.add("card");
         card.textContent = addBook.info();
         bookCards.appendChild(card);
-    });   
+    }); 
 }
-
-
