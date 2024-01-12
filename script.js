@@ -1,6 +1,6 @@
 const container = document.querySelector(".container");
 const bookCards = document.querySelector(".bookCards");
-
+const newButon = document.querySelector(".new");
 const myLibrary = []; // Book items
 
 function Book(title, author, pages, read) {
@@ -61,7 +61,6 @@ const addBooktoLibrary = () => {
     readInput.type = "checkbox";
     readInput.id = "read";
     readInput.name = "read";
-    //readInput.value = "read";
     const rLabel = document.createElement("label");
     rLabel.htmlFor = "read";
     rLabel.textContent = "Read: ";
@@ -73,6 +72,8 @@ const addBooktoLibrary = () => {
     post.type = "sumbit";
     post.textContent = "Add book";
     fieldset.appendChild(post);
+
+    newButon.style.visibility = "hidden";
 
     post.addEventListener("click", (event) => {
         event.preventDefault();
@@ -90,5 +91,7 @@ const addBooktoLibrary = () => {
         card.classList.add("card");
         card.textContent = addBook.info();
         bookCards.appendChild(card);
+
+        newButon.style.visibility = "visible";
     }); 
 }
