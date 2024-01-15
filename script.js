@@ -12,6 +12,9 @@ function Book(title, author, pages, read) {
     this.info = () => {
         return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
     }
+    this.toggle = () => {
+        return `${this.title}, ${this.author}, ${this.pages}`;
+    }
 }
 
 const addBooktoLibrary = () => {
@@ -82,16 +85,44 @@ const addBooktoLibrary = () => {
         } else if (readInput.checked === true) {
             readInput.value = "read";
         }
+        
         myLibrary.push(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
-        const addBook  = new Book(myLibrary[0], myLibrary[1], myLibrary[2], myLibrary[3]);
-        myLibrary.length = 0;
+        const addBook  = new Book(myLibrary[myLibrary.length - 4], myLibrary[myLibrary.length - 3], myLibrary[myLibrary.length - 2], myLibrary[myLibrary.length - 1]);
         form.remove();
+        //myLibrary.length = 0;
 
         const card = document.createElement("div");
         card.classList.add("card");
+        card.style.display = "block";
         card.textContent = addBook.info();
+        card.appendChild(br.cloneNode());
         bookCards.appendChild(card);
+        
+        const toggleOn = document.createElement("button");
+        toggleOn.classList.add("toggleOn");
+        toggleOn.textContent = "Mark read";
+        card.appendChild(toggleOn);
 
-        newButon.style.visibility = "visible";
-    }); 
+        const toggleOff = document.createElement("button");
+        toggleOff.classList.add("toggleOff");
+        toggleOff.textContent = "Mark unread";
+        card.appendChild(toggleOff);
+
+        toggleOff.addEventListener("click", () => {
+            card.textContent = `${addBook.toggle()} not read`;
+            card.appendChild(br.cloneNode());
+            card.appendChild(toggleOn);
+            card.appendChild(toggleOff);
+        });
+
+
+        toggleOn.addEventListener("click", () => {
+            card.textContent = `${addBook.toggle()} read`;
+            card.appendChild(br.cloneNode());
+            card.appendChild(toggleOn);
+            card.appendChild(toggleOff);
+        });
+
+        newButon.style.visibility = "visible"; 
+    });
 }
