@@ -108,6 +108,15 @@ const addBooktoLibrary = () => {
         toggleOff.textContent = "Mark unread";
         card.appendChild(toggleOff);
 
+        const del = document.createElement("button");
+        del.classList.add("delCard");
+        del.textContent = "Delete";
+        card.appendChild(del);
+
+        del.addEventListener("click", () => {
+            card.remove();
+        });
+
         toggleOff.addEventListener("click", () => {
             card.textContent = `${addBook.toggle()} not read`;
             card.appendChild(br.cloneNode());
