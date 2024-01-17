@@ -12,8 +12,16 @@ body {
     height: 100%;
 }
 
+.new {
+    margin-left: 50%;
+}
+
 .bookCards {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    margin: auto;
     flex-wrap: wrap;
 }
 .card {
