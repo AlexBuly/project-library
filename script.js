@@ -100,13 +100,12 @@ const addBooktoLibrary = () => {
         
         const toggleOn = document.createElement("button");
         toggleOn.classList.add("toggleOn");
-        toggleOn.textContent = "Mark read";
-        card.appendChild(toggleOn);
+        toggleOn.textContent = "Mark read"
+        //card.appendChild(toggleOn);
 
         const toggleOff = document.createElement("button");
         toggleOff.classList.add("toggleOff");
         toggleOff.textContent = "Mark unread";
-        card.appendChild(toggleOff);
 
         const del = document.createElement("button");
         del.classList.add("delCard");
@@ -118,19 +117,23 @@ const addBooktoLibrary = () => {
         });
 
         toggleOff.addEventListener("click", () => {
-            card.textContent = `${addBook.toggle()} not read`;
+            card.textContent = `${addBook.toggle()} , not read`;
             card.appendChild(br.cloneNode());
             card.appendChild(toggleOn);
-            card.appendChild(toggleOff);
         });
 
 
         toggleOn.addEventListener("click", () => {
-            card.textContent = `${addBook.toggle()} read`;
+            card.textContent = `${addBook.toggle()} , read`;
             card.appendChild(br.cloneNode());
-            card.appendChild(toggleOn);
             card.appendChild(toggleOff);
         });
+
+        if (readInput.checked === false) {
+            card.appendChild(toggleOn);
+        } else if (readInput.checked === true) {
+            card.appendChild(toggleOff);
+        }
 
         newButon.style.visibility = "visible"; 
     });
