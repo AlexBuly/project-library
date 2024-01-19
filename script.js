@@ -119,6 +119,7 @@ const addBooktoLibrary = () => {
         toggleOff.addEventListener("click", () => {
             card.textContent = `${addBook.toggle()} , not read`;
             card.appendChild(br.cloneNode());
+            card.appendChild(del);
             card.appendChild(toggleOn);
         });
 
@@ -126,6 +127,7 @@ const addBooktoLibrary = () => {
         toggleOn.addEventListener("click", () => {
             card.textContent = `${addBook.toggle()} , read`;
             card.appendChild(br.cloneNode());
+            card.appendChild(del);
             card.appendChild(toggleOff);
         });
 
