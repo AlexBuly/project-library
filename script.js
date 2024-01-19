@@ -18,6 +18,7 @@ function Book(title, author, pages, read) {
 }
 
 const addBooktoLibrary = () => {
+    bookCards.style.height = "30%";
     const form = document.createElement("form");
     const fieldset = document.createElement("fieldset");
     form.setAttribute("method", "post");
@@ -97,6 +98,7 @@ const addBooktoLibrary = () => {
         card.textContent = addBook.info();
         card.appendChild(br.cloneNode());
         bookCards.appendChild(card);
+        bookCards.style.height = "75%";
         
         const toggleOn = document.createElement("button");
         toggleOn.classList.add("toggleOn");

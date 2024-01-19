@@ -7,6 +7,7 @@
 body {
     height: 100vh;
 }
+
 .container {
     background-color: lightgrey;
     height: 100%;
@@ -16,12 +17,31 @@ body {
     margin-left: 50%;
 }
 
-.bookCards {
+form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+fieldset {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    width: 300px;
+    background-color: aliceblue;
+    border: none;
+    column-gap: 5%;
+}
+
+label {
+    grid-column: 1;
+}
+
+.bookCards {
+    display: flex;
+    justify-content: center;
     height: 75%;
-    margin: auto;
+    align-items: center;
     flex-wrap: wrap;
 }
 .card {
