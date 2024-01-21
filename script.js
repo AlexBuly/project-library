@@ -19,6 +19,7 @@ function Book(title, author, pages, read) {
 
 const addBooktoLibrary = () => {
     bookCards.style.height = "30%";
+    bookCards.style.visibility = "hidden"
     const form = document.createElement("form");
     const fieldset = document.createElement("fieldset");
     form.setAttribute("method", "post");
@@ -89,8 +90,86 @@ const addBooktoLibrary = () => {
         
         myLibrary.push(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
         const addBook  = new Book(myLibrary[myLibrary.length - 4], myLibrary[myLibrary.length - 3], myLibrary[myLibrary.length - 2], myLibrary[myLibrary.length - 1]);
-        form.remove();
-        //myLibrary.length = 0;
+        if (titleInput.value === "") {
+            const titleError = document.createElement("div");
+            titleError.classList.add("titleError");
+            titleError.textContent = "Title cannot be empty";
+            titleError.style.color = "white";
+            titleError.style.backgroundColor = "red";
+            titleInput.insertAdjacentElement("afterend", titleError);
+            
+            newButon.style.visibility = "hidden";
+            } else if (authorInput.value === "") {
+                const authorError = document.createElement("div")
+                authorError.classList.add("authorError");
+                authorError.textContent = "Author cannot be empty";
+                authorError.style.color = "white";
+                authorError.style.backgroundColor = "red";
+                authorInput.insertAdjacentElement("afterend", authorError);
+            } else if (pagesInput.value === "") {
+                const pageError = document.createElement("div");
+                pageError.classList.add("pageError");
+                pageError.textContent = "Pages cannot be emtpy";
+                pageError.style.color = "white";
+                pageError.style.backgroundColor = "red";
+                pagesInput.insertAdjacentElement("afterend", pageError);
+            } else {
+                form.remove();
+                bookCards.style.visibility = "visible";
+
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.style.display = "block";
+                card.textContent = addBook.info();
+                card.appendChild(br.cloneNode());
+                bookCards.appendChild(card);
+                bookCards.style.height = "75%";
+
+                const toggleOn = document.createElement("button");
+                toggleOn.classList.add("toggleOn");
+                toggleOn.textContent = "Mark read"
+    
+                const toggleOff = document.createElement("button");
+                toggleOff.classList.add("toggleOff");
+                toggleOff.textContent = "Mark unread";
+
+                const del = document.createElement("button");
+                del.classList.add("delCard");
+                del.textContent = "Delete";
+                card.appendChild(del);
+
+                del.addEventListener("click", () => {
+                    card.remove();
+                });
+
+                toggleOff.addEventListener("click", () => {
+                    card.textContent = `${addBook.toggle()} , not read`;
+                    card.appendChild(br.cloneNode());
+                    card.appendChild(del);
+                    card.appendChild(toggleOn);
+                });
+
+
+                toggleOn.addEventListener("click", () => {
+                    card.textContent = `${addBook.toggle()} , read`;
+                    card.appendChild(br.cloneNode());
+                    card.appendChild(del);
+                    card.appendChild(toggleOff);
+                });
+
+                if (readInput.checked === false) {
+                    card.appendChild(toggleOn);
+                } else if (readInput.checked === true) {
+                    card.appendChild(toggleOff);
+                }
+                newButon.style.visibility = "visible";
+                }
+            });
+        }
+
+            
+        /*form.remove();
+        bookCards.style.visibility = "visible";
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -98,47 +177,7 @@ const addBooktoLibrary = () => {
         card.textContent = addBook.info();
         card.appendChild(br.cloneNode());
         bookCards.appendChild(card);
-        bookCards.style.height = "75%";
+        bookCards.style.height = "75%";*/
         
-        const toggleOn = document.createElement("button");
-        toggleOn.classList.add("toggleOn");
-        toggleOn.textContent = "Mark read"
-        //card.appendChild(toggleOn);
-
-        const toggleOff = document.createElement("button");
-        toggleOff.classList.add("toggleOff");
-        toggleOff.textContent = "Mark unread";
-
-        const del = document.createElement("button");
-        del.classList.add("delCard");
-        del.textContent = "Delete";
-        card.appendChild(del);
-
-        del.addEventListener("click", () => {
-            card.remove();
-        });
-
-        toggleOff.addEventListener("click", () => {
-            card.textContent = `${addBook.toggle()} , not read`;
-            card.appendChild(br.cloneNode());
-            card.appendChild(del);
-            card.appendChild(toggleOn);
-        });
-
-
-        toggleOn.addEventListener("click", () => {
-            card.textContent = `${addBook.toggle()} , read`;
-            card.appendChild(br.cloneNode());
-            card.appendChild(del);
-            card.appendChild(toggleOff);
-        });
-
-        if (readInput.checked === false) {
-            card.appendChild(toggleOn);
-        } else if (readInput.checked === true) {
-            card.appendChild(toggleOff);
-        }
-
-        newButon.style.visibility = "visible"; 
-    });
-}
+        
+//}
