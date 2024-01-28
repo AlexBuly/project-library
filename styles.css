@@ -4,6 +4,13 @@
     padding: 0;
 }
 
+.titleError,
+.authorError,
+.pageError {
+    grid-column: 1 / -1;
+    margin-top: 5%;
+}
+
 body {
     height: 100vh;
 }

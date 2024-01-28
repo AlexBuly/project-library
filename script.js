@@ -10,7 +10,7 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = () => {
-        return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
+        return `${this.title},${this.author}, ${this.pages}, ${this.read}`;
     }
     this.toggle = () => {
         return `${this.title}, ${this.author}, ${this.pages}`;
