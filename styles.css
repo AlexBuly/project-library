@@ -52,8 +52,8 @@ label {
     flex-wrap: wrap;
 }
 .card {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding-top: 50px;
     margin: 1em;

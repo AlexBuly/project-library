@@ -125,9 +125,10 @@ const addBooktoLibrary = () => {
                 bookCards.appendChild(card);
                 bookCards.style.height = "75%";
 
+               
                 const cardBtns = document.createElement("div");
                 cardBtns.classList.add("cardBtns");
-                card.appendChild(cardBtns)
+                card.appendChild(cardBtns);
 
                 const toggleOn = document.createElement("button");
                 toggleOn.classList.add("toggleOn");
@@ -148,17 +149,21 @@ const addBooktoLibrary = () => {
 
                 toggleOff.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , not read`;
-                    card.appendChild(br.cloneNode());
+                    card.appendChild(cardBtns);
+                    //cardBtns.appendChild(br.cloneNode());
                     cardBtns.appendChild(del);
                     cardBtns.appendChild(toggleOn);
+                    toggleOff.remove();
                 });
 
 
                 toggleOn.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , read`;
-                    card.appendChild(br.cloneNode());
+                    card.appendChild(cardBtns);
+                    //cardBtns.appendChild(br.cloneNode());
                     cardBtns.appendChild(del);
                     cardBtns.appendChild(toggleOff);
+                    toggleOn.remove();
                 });
 
                 if (readInput.checked === false) {
