@@ -10,7 +10,8 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = () => {
-        return `${this.title},${this.author}, ${this.pages}, ${this.read}`;
+        return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
+    
     }
     this.toggle = () => {
         return `${this.title}, ${this.author}, ${this.pages}`;
@@ -119,11 +120,14 @@ const addBooktoLibrary = () => {
 
                 const card = document.createElement("div");
                 card.classList.add("card");
-                card.style.display = "block";
                 card.textContent = addBook.info();
                 card.appendChild(br.cloneNode());
                 bookCards.appendChild(card);
                 bookCards.style.height = "75%";
+
+                const cardBtns = document.createElement("div");
+                cardBtns.classList.add("cardBtns");
+                card.appendChild(cardBtns)
 
                 const toggleOn = document.createElement("button");
                 toggleOn.classList.add("toggleOn");
@@ -136,7 +140,7 @@ const addBooktoLibrary = () => {
                 const del = document.createElement("button");
                 del.classList.add("delCard");
                 del.textContent = "Delete";
-                card.appendChild(del);
+                cardBtns.appendChild(del);
 
                 del.addEventListener("click", () => {
                     card.remove();
@@ -145,22 +149,22 @@ const addBooktoLibrary = () => {
                 toggleOff.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , not read`;
                     card.appendChild(br.cloneNode());
-                    card.appendChild(del);
-                    card.appendChild(toggleOn);
+                    cardBtns.appendChild(del);
+                    cardBtns.appendChild(toggleOn);
                 });
 
 
                 toggleOn.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , read`;
                     card.appendChild(br.cloneNode());
-                    card.appendChild(del);
-                    card.appendChild(toggleOff);
+                    cardBtns.appendChild(del);
+                    cardBtns.appendChild(toggleOff);
                 });
 
                 if (readInput.checked === false) {
-                    card.appendChild(toggleOn);
+                    cardBtns.appendChild(toggleOn);
                 } else if (readInput.checked === true) {
-                    card.appendChild(toggleOff);
+                    cardBtns.appendChild(toggleOff);
                 }
                 newButon.style.visibility = "visible";
                 }
