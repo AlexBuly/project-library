@@ -52,12 +52,20 @@ label {
     flex-wrap: wrap;
 }
 .card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     text-align: center;
+    justify-content: center;
     padding-top: 50px;
     margin: 1em;
     height: 200px;
     width: 300px;
     background-color: white;
 }
+
+.cardBtns {
+    display: flex;
+    flex: 1;
+    height: 50%;
+    gap: 1em;
+}
+
