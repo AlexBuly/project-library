@@ -82,3 +82,8 @@ button[type=sumbit] {
     margin-top: 1em;
 }
 
+button:hover {
+    background-color: rgb(127, 191, 211);
+    transition: 0.3s ease-in-out;
+}
+
