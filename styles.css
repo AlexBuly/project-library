@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .titleError,
@@ -61,12 +62,13 @@ label {
     height: 200px;
     width: 300px;
     background-color: white;
+
 }
 
 .cardBtns {
     display: flex;
-    justify-content: space-around;
     height: 30%;
+    width: 100%;
     gap: 3em;
 }
 
@@ -74,6 +76,15 @@ button {
     background-color: lightblue;
     cursor: pointer;
     border: 2px solid black;
+    font-weight: bold;
+}
+
+.new {
+    font-size: 22px;
+    font-weight: bold;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
 
 button[type=sumbit] {
