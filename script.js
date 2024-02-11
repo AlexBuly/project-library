@@ -10,11 +10,11 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.info = () => {
-        return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
+        return `${this.title}, ${this.author}, ${this.pages} pages, ${this.read}`;
     
     }
     this.toggle = () => {
-        return `${this.title}, ${this.author}, ${this.pages}`;
+        return `${this.title}, ${this.author}, ${this.pages}`; // method to handle read status
     }
 }
 
@@ -78,7 +78,7 @@ const addBooktoLibrary = () => {
     post.type = "sumbit";
     post.textContent = "Add book";
     fieldset.appendChild(post);
-
+    // hides the new book button while the form is displayed
     newButon.style.visibility = "hidden";
 
     post.addEventListener("click", (event) => {
@@ -146,21 +146,19 @@ const addBooktoLibrary = () => {
                 del.addEventListener("click", () => {
                     card.remove();
                 });
-
+                // change status to not read
                 toggleOff.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , not read`;
                     card.appendChild(cardBtns);
-                    //cardBtns.appendChild(br.cloneNode());
                     cardBtns.appendChild(del);
                     cardBtns.appendChild(toggleOn);
                     toggleOff.remove();
                 });
 
-
+                // change status to read
                 toggleOn.addEventListener("click", () => {
                     card.textContent = `${addBook.toggle()} , read`;
                     card.appendChild(cardBtns);
-                    //cardBtns.appendChild(br.cloneNode());
                     cardBtns.appendChild(del);
                     cardBtns.appendChild(toggleOff);
                     toggleOn.remove();
@@ -175,18 +173,3 @@ const addBooktoLibrary = () => {
                 }
             });
         }
-
-            
-        /*form.remove();
-        bookCards.style.visibility = "visible";
-
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.style.display = "block";
-        card.textContent = addBook.info();
-        card.appendChild(br.cloneNode());
-        bookCards.appendChild(card);
-        bookCards.style.height = "75%";*/
-        
-        
-//}
