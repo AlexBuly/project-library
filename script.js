@@ -3,19 +3,19 @@ const bookCards = document.querySelector(".bookCards");
 const newButon = document.querySelector(".new");
 const myLibrary = []; // Book items
 
-function Book(title, author, pages, read) {
-    // author, title, pages, read
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = () => {
-        return `${this.title}, ${this.author}, ${this.pages} pages, ${this.read}`;
-    
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
-    this.toggle = () => {
-        return `${this.title}, ${this.author}, ${this.pages}`; // method to handle read status
-    }
+        info() {
+            return `${this.title}, ${this.author}, ${this.pages} pages, ${this.read}`;
+        }
+        toggle () {
+            return `${this.title}, ${this.author}, ${this.pages}`; // method to handle read status
+        }
 }
 
 const addBooktoLibrary = () => {
