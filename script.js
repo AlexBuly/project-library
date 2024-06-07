@@ -10,12 +10,14 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
-        info() {
-            return `${this.title}, ${this.author}, ${this.pages} pages, ${this.read}`;
-        }
-        toggle () {
-            return `${this.title}, ${this.author}, ${this.pages}`; // method to handle read status
-        }
+    
+    info() {
+        return `${this.title}, ${this.author}, ${this.pages} pages, ${this.read}`;
+    }
+    
+    toggle () {
+        return `${this.title}, ${this.author}, ${this.pages}`; // method to handle read status
+    }
 }
 
 const addBooktoLibrary = () => {
